@@ -1,0 +1,53 @@
+= Cache data loss reproducer
+
+Checkout the project. Build it.
+
+----
+mvn clean package
+----
+
+== Complete data loss
+
+1. Start the initial member
+
+----
+java -Djava.net.preferIPv4Stack=true -cp target/cache-dataloss-1.0-SNAPSHOT.jar sample.InitialMember
+----
+
+2. Start two new members
+
+----
+java -Djava.net.preferIPv4Stack=true -cp target/cache-dataloss-1.0-SNAPSHOT.jar sample.NewMember
+----
+
+3. Stop the initial member (press `ENTER`)
+
+4. Start the testing member
+
+----
+java -Djava.net.preferIPv4Stack=true -cp target/cache-dataloss-1.0-SNAPSHOT.jar sample.TestingMember
+----
+
+
+== Partial data loss
+
+
+1. Start the initial member
+
+----
+java -Djava.net.preferIPv4Stack=true -cp target/cache-dataloss-1.0-SNAPSHOT.jar sample.InitialMember
+----
+
+2. Start two new members with status check
+
+----
+java -Djava.net.preferIPv4Stack=true -cp target/cache-dataloss-1.0-SNAPSHOT.jar sample.NewMemberWithStatusCheck
+----
+
+3. Stop the initial member (press `ENTER`)
+
+4. Start the testing member
+
+----
+java -Djava.net.preferIPv4Stack=true -cp target/cache-dataloss-1.0-SNAPSHOT.jar sample.TestingMember
+----
